@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/authRoute');
+const testimonialRoute = require('./routes/testimonialRoute');
 const { failure } = require('./lib/response');
 const { DEFAULTS } = require('./lib/constants');
 
@@ -11,6 +12,8 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/auth', authRoute);
+
+app.use('/api/testimonials', testimonialRoute);
 
 app.use((req, res) => failure(res, 404, 'Route not found'));
 
